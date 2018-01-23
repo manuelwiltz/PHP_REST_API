@@ -24,6 +24,8 @@ class Product {
           . "product.cat_id = category.id";
          * 
          */
+        
+        $query1 = "select product.id, product.cat_id, product.user_id, product.name, category.name as 'cat_name', product.description, product.price, product.amount, product.created from product, category where product.cat_id = category.id"; 
 
         $query = "select * from product";
 
@@ -34,7 +36,7 @@ class Product {
          * 
          */
 
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->conn->prepare($query1);
 
         $stmt->execute();
 

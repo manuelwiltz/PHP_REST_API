@@ -23,7 +23,7 @@ if ($num > 0) {
 
         $product_item = array(
             "id" => $id,
-            "cat_id" => $cat_id,
+            "cat_name" => $cat_name,
             "user_id" => $user_id,
             "name" => $name,
             "description" => $description,
