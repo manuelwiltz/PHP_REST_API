@@ -1,0 +1,38 @@
+http://localhost/PHP_Projects/PHP_REST_API/product/create.php
+
+User-Agent: Fiddler
+Content-Type: application/json
+Host: localhost
+Content-Length: 167
+
+{
+    "cat_id": 2,
+    "user_id": 1,
+    "name": "Ziege",
+    "description": "Neues Haustier",
+    "price": 22.99,
+    "amount": 1,
+    "created": 1513090800
+}
+
+//user member variables 
+public $id;
+public $username;
+public $password;
+public $email;
+public $firstname;
+public $lastname;
+public $job;
+public $income;
+public $created;
+
+{
+    "username": "TestUser",
+    "password":  "asdf",
+    "email":  "useremail@gmail.com",
+    "firstname":  "UserFirstname",
+    "lastname":  "UserLastname",
+    "job":  "Student",
+    "income":  400,
+    "created":  1513090800
+}
