@@ -19,23 +19,9 @@ class Product {
     //Read all products
     //http://localhost/PHP_Projects/PHP_REST_API/product/read.php?user_id=12
     function read() {
-        /* $query = "select product.id, product.cat_id, product.user_id, product.name, category.name product.description"
-          . "product.price, product.amount, product.created from product, category where"
-          . "product.cat_id = category.id";
-         * 
-         */
+        $query1 = "select product.id, product.cat_id, product.user_id, product.name, category.name as 'cat_name', category.description as 'cat_desc', product.description, product.price, product.amount, product.created from product, category where product.cat_id = category.id"; 
+        //$query = "select * from product";
         
-        $query1 = "select product.id, product.cat_id, product.user_id, product.name, category.name as 'cat_name', product.description, product.price, product.amount, product.created from product, category where product.cat_id = category.id"; 
-
-        $query = "select * from product";
-
-        /* $query = "SELECT
-          c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created FROM "
-          . $this->table_name
-          . " p LEFT JOIN categories c ON p.category_id = c.id ORDER BY p.created DESC";
-         * 
-         */
-
         $stmt = $this->conn->prepare($query1);
 
         $stmt->execute();
@@ -44,13 +30,15 @@ class Product {
     }
 
     //Read products by username
-    //http://localhost/PHP_Projects/PHP_REST_API/product/readByUser.php?id=1
+    //http://localhost/PHP_Projects/PHP_REST_API/product/readByUser.php?user_id=1
     function readByUser($user_id) {
 
-        $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = " . $this->user_id;
+        //$query = "SELECT * FROM " . $this->table_name . " WHERE user_id = " . $this->user_id;
         //$query = "select * from product where user_id = 1";
 
-        $stmt = $this->conn->prepare($query);
+        $query1 = "select product.id, product.cat_id, product.user_id, product.name, category.name as 'cat_name', category.description as 'cat_desc', product.description, product.price, product.amount, product.created from product, category where product.cat_id = category.id and product.user_id = " . $this->user_id; 
+        
+        $stmt = $this->conn->prepare($query1);
 
         $stmt->execute();
 

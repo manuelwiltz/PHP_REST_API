@@ -2,6 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/PHP_Projects/PHP_REST_API/objects/product.php</file>
+            <file>file:/C:/xampp/htdocs/PHP_Projects/PHP_REST_API/product/read.php</file>
+            <file>file:/C:/xampp/htdocs/PHP_Projects/PHP_REST_API/product/readByUser.php</file>
+        </group>
     </open-files>
 </project-private>
