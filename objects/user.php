@@ -1,10 +1,9 @@
 <?php
 
 class User {
-    
+
     private $conn;
     private $table_name = "user";
-    
     public $id;
     public $username;
     public $password;
@@ -14,11 +13,11 @@ class User {
     public $job;
     public $income;
     public $created;
-    
+
     public function __construct($db) {
         $this->conn = $db;
     }
-    
+
     //http://localhost/PHP_Projects/PHP_REST_API/user/read.php
     function read() {
         $query = "select * from user";
@@ -29,7 +28,7 @@ class User {
 
         return $stmt;
     }
-    
+
     //http://localhost/PHP_Projects/PHP_REST_API/user/readUserById.php?id=1
     function readByUser($id) {
         $query = "SELECT * FROM " . $this->table_name . " WHERE id = " . $this->id;
@@ -40,7 +39,18 @@ class User {
 
         return $stmt;
     }
-    
+
+    //http://localhost/PHP_Projects/PHP_REST_API/user/getUserByUsernameAndPassword.php?username=manni&password=asdf
+    function getUserByUsernameAndPassword($username, $password) {
+        $query = "select * from " . $this->table_name . " where username='" . $this->username . "' and password='" . $this->password . "'";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
+
     function create() {
 
         $query = "INSERT INTO
@@ -81,9 +91,9 @@ class User {
             return false;
         }
     }
-    
+
     function update() {
-        
+
         $query = "UPDATE
                 " . $this->table_name . "
             SET
@@ -141,5 +151,5 @@ class User {
 
         return false;
     }
-    
+
 }
