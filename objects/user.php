@@ -50,6 +50,17 @@ class User {
 
         return $stmt;
     }
+    
+    //http://localhost/PHP_Projects/PHP_REST_API/user/getUserByEmailAndPassword.php?email=manni&password=asdf
+    function getUserByEmailAndPassword($email, $password) {
+        $query = "select * from " . $this->table_name . " where email='" . $this->email . "' and password='" . $this->password . "'";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
 
     function create() {
 
