@@ -109,7 +109,7 @@ class Category {
 
     //http://localhost/PHP_Projects/PHP_REST_API/category/readDefaultCategories.php
     public function readDefaultCategories() {
-        $query = "select * from " . $this->table_name . " where user_id is null";
+        $query = "select * from " . $this->table_name . " where user_id = -1";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -129,7 +129,7 @@ class Category {
     
     //http://localhost/PHP_Projects/PHP_REST_API/category/readAllCategoriesByUser.php?user_id=2
     public function readAllCategoriesByUser() {
-        $query = "select * from " . $this->table_name . " where user_id = " . $this->user_id . " or user_id is null";
+        $query = "select * from " . $this->table_name . " where user_id = " . $this->user_id . " or user_id = -1";
         
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
