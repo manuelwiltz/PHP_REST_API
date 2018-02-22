@@ -2,10 +2,8 @@
 
 class Category {
 
-    // database connection and table name
     private $conn;
     private $table_name = "category";
-    // object properties
     public $id;
     public $user_id;
     public $name;
@@ -26,16 +24,13 @@ class Category {
                 description=:description, 
                 created=:created";
 
-        // prepare query
         $stmt = $this->conn->prepare($query);
 
-        // sanitize
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->description = htmlspecialchars(strip_tags($this->description));
         $this->created = htmlspecialchars(strip_tags($this->created));
 
-        // bind values
         $stmt->bindParam(":user_id", $this->user_id);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":description", $this->description);
@@ -119,6 +114,8 @@ class Category {
     
     //http://localhost/PHP_Projects/PHP_REST_API/category/readCategoriesByUser.php?user_id=2
     public function readCategoriesByUser() {
+        $this->user_id = (int)htmlspecialchars(strip_tags($this->user_id));
+        
         $query = "select * from " . $this->table_name . " where user_id = " . $this->user_id;
         
         $stmt = $this->conn->prepare($query);
@@ -129,6 +126,8 @@ class Category {
     
     //http://localhost/PHP_Projects/PHP_REST_API/category/readAllCategoriesByUser.php?user_id=2
     public function readAllCategoriesByUser() {
+        $this->user_id = (int)htmlspecialchars(strip_tags($this->user_id));
+        
         $query = "select * from " . $this->table_name . " where user_id = " . $this->user_id . " or user_id = -1";
         
         $stmt = $this->conn->prepare($query);

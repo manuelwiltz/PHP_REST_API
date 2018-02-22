@@ -17,13 +17,11 @@ class Product {
     }
 
     //Read all products
-    //http://localhost/PHP_Projects/PHP_REST_API/product/read.php?user_id=12
+    //http://localhost/PHP_Projects/PHP_REST_API/product/read.php
     function read() {
         $query1 = "select product.id, product.cat_id, product.user_id, product.name, category.name as 'cat_name', category.description as 'cat_desc', product.description, product.price, product.amount, product.created from product, category where product.cat_id = category.id"; 
-        //$query = "select * from product";
         
         $stmt = $this->conn->prepare($query1);
-
         $stmt->execute();
 
         return $stmt;
@@ -32,14 +30,11 @@ class Product {
     //Read products by username
     //http://localhost/PHP_Projects/PHP_REST_API/product/readByUser.php?user_id=1
     function readByUser($user_id) {
-
-        //$query = "SELECT * FROM " . $this->table_name . " WHERE user_id = " . $this->user_id;
-        //$query = "select * from product where user_id = 1";
-
+        $this->user_id = (int)htmlspecialchars(strip_tags($this->user_id));
+        
         $query1 = "select product.id, product.cat_id, product.user_id, product.name, category.name as 'cat_name', category.description as 'cat_desc', product.description, product.price, product.amount, product.created from product, category where product.cat_id = category.id and product.user_id = " . $this->user_id; 
         
         $stmt = $this->conn->prepare($query1);
-
         $stmt->execute();
 
         return $stmt;
@@ -129,26 +124,23 @@ class Product {
     }
 
     function delete() {
-
         $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
 
         $stmt = $this->conn->prepare($query);
-
         $this->id = htmlspecialchars(strip_tags($this->id));
-
         $stmt->bindParam(1, $this->id);
 
         if ($stmt->execute()) {
             return true;
         }
-
         return false;
     }
 
     // search products
     //http://localhost/PHP_Projects/PHP_REST_API/product/searchProductByName.php?s=Kebap
     function searchProductByName($keywords) {
-
+        $keywords = htmlspecialchars(strip_tags($keywords));
+        
         $query = "SELECT * FROM " . $this->table_name . " WHERE name LIKE ? OR description LIKE ? ";
 
         $stmt = $this->conn->prepare($query);

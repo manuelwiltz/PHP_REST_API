@@ -17,7 +17,7 @@ $user = new User($db);
 $id = isset($_GET['id']) ? $_GET['id'] : die();
 $user->id = $id;
 
-$stmt = $user->readByUser($id);
+$stmt = $user->readUserById($id);
 $num = $stmt->rowCount();
 
 if ($num > 0) {

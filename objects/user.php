@@ -30,7 +30,9 @@ class User {
     }
 
     //http://localhost/PHP_Projects/PHP_REST_API/user/readUserById.php?id=1
-    function readByUser($id) {
+    function readUserById($id) {
+        $this->id = (int)htmlspecialchars(strip_tags($this->id));
+        
         $query = "SELECT * FROM " . $this->table_name . " WHERE id = " . $this->id;
 
         $stmt = $this->conn->prepare($query);
@@ -42,6 +44,9 @@ class User {
 
     //http://localhost/PHP_Projects/PHP_REST_API/user/getUserByUsernameAndPassword.php?username=manni&password=asdf
     function getUserByUsernameAndPassword($username, $password) {
+        $this->password = htmlspecialchars(strip_tags($this->password));
+        $this->username = htmlspecialchars(strip_tags($this->username));
+        
         $query = "select * from " . $this->table_name . " where username='" . $this->username . "' and password='" . $this->password . "'";
 
         $stmt = $this->conn->prepare($query);
@@ -53,6 +58,9 @@ class User {
     
     //http://localhost/PHP_Projects/PHP_REST_API/user/getUserByEmailAndPassword.php?email=manni&password=asdf
     function getUserByEmailAndPassword($email, $password) {
+        $this->password = htmlspecialchars(strip_tags($this->password));
+        $this->email = htmlspecialchars(strip_tags($this->email));
+        
         $query = "select * from " . $this->table_name . " where email='" . $this->email . "' and password='" . $this->password . "'";
 
         $stmt = $this->conn->prepare($query);
