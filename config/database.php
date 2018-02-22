@@ -2,14 +2,11 @@
 
 class Database {
     private $host = "localhost";
-    private $db_name = "api_db"; //name = 
-    private $username = "root"; //pw = api$$pass$$
+    private $db_name = "api_db";
+    private $username = "root";
     private $password = "";
     private $conn;
     
-    //private $db_name = "portman_api";
-    //private $username = "portman_api";
-    //private $password = 'api$$pass$$';
     
     public function getConnection() {
         $this->conn = null;
