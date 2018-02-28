@@ -129,6 +129,7 @@ class User {
 
         $stmt = $this->conn->prepare($query);
 
+        $this->id = htmlspecialchars(strip_tags($this->id));
         $this->username = htmlspecialchars(strip_tags($this->username));
         $this->password = htmlspecialchars(strip_tags($this->password));
         $this->email = htmlspecialchars(strip_tags($this->email));
