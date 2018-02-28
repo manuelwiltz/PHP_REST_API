@@ -99,12 +99,14 @@ class Budget {
 
         $stmt = $this->conn->prepare($query);
 
+        $this->id = htmlspecialchars(strip_tags($this->id));
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
         $this->amount = htmlspecialchars(strip_tags($this->amount));
         $this->current_amount = htmlspecialchars(strip_tags($this->current_amount));
         $this->start_date = htmlspecialchars(strip_tags($this->start_date));
         $this->end_date = htmlspecialchars(strip_tags($this->end_date));
 
+        $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":user_id", $this->user_id);
         $stmt->bindParam(":amount", $this->amount);
         $stmt->bindParam(":current_amount", $this->current_amount);

@@ -100,6 +100,7 @@ class Product {
 
         $stmt = $this->conn->prepare($query);
 
+        $this->id = htmlspecialchars(strip_tags($this->id));
         $this->cat_id = htmlspecialchars(strip_tags($this->cat_id));
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
         $this->name = htmlspecialchars(strip_tags($this->name));
@@ -108,6 +109,7 @@ class Product {
         $this->amount = htmlspecialchars(strip_tags($this->amount));
         $this->created = htmlspecialchars(strip_tags($this->created));
 
+        $stmt->bindParam("id", $this->id);
         $stmt->bindParam("cat_id", $this->cat_id);
         $stmt->bindParam("user_id", $this->user_id);
         $stmt->bindParam(":name", $this->name);

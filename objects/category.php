@@ -58,11 +58,13 @@ class Category {
 
         $stmt = $this->conn->prepare($query);
 
+        $this->id = htmlspecialchars(strip_tags($this->id));
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->description = htmlspecialchars(strip_tags($this->description));
         $this->created = htmlspecialchars(strip_tags($this->created));
 
+        $stmt->bindParam("id", $this->id);
         $stmt->bindParam("user_id", $this->user_id);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":description", $this->description);

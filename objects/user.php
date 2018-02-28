@@ -139,6 +139,7 @@ class User {
         $this->income = htmlspecialchars(strip_tags($this->income));
         $this->created = htmlspecialchars(strip_tags($this->created));
 
+        $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":username", $this->username);
         $stmt->bindParam(":password", $this->password);
         $stmt->bindParam(":email", $this->email);
