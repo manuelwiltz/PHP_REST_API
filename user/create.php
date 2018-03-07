@@ -23,7 +23,7 @@ $user->firstname = $data->firstname;
 $user->lastname = $data->lastname;
 $user->job = $data->job;
 $user->income = $data->income;
-$user->created = date('Y-m-d H:i:s');
+//$user->created = date('Y-m-d H:i:s');
 
 
 if ($user->create()) {

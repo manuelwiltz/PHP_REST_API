@@ -81,8 +81,8 @@ class User {
                 firstname=:firstname,
                 lastname=:lastname, 
                 job=:job, 
-                income=:income, 
-                created=:created";
+                income=:income"; /*, 
+                created=:created";*/
 
         $stmt = $this->conn->prepare($query);
 
@@ -93,7 +93,7 @@ class User {
         $this->lastname = htmlspecialchars(strip_tags($this->lastname));
         $this->job = htmlspecialchars(strip_tags($this->job));
         $this->income = htmlspecialchars(strip_tags($this->income));
-        $this->created = htmlspecialchars(strip_tags($this->created));
+        //$this->created = htmlspecialchars(strip_tags($this->created));
 
         $stmt->bindParam(":username", $this->username);
         $stmt->bindParam(":password", $this->password);
@@ -102,7 +102,7 @@ class User {
         $stmt->bindParam(":lastname", $this->lastname);
         $stmt->bindParam(":job", $this->job);
         $stmt->bindParam(":income", $this->income);
-        $stmt->bindParam(":created", $this->created);
+        //$stmt->bindParam(":created", $this->created);
 
         if ($stmt->execute()) {
             return true;

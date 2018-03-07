@@ -51,8 +51,8 @@ class Product {
                 name=:name, 
                 description=:description, 
                 price=:price, 
-                amount=:amount, 
-                created=:created";
+                amount=:amount";/*, 
+                created=:created";*/
 
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -64,7 +64,7 @@ class Product {
         $this->description = htmlspecialchars(strip_tags($this->description));
         $this->price = htmlspecialchars(strip_tags($this->price));
         $this->amount = htmlspecialchars(strip_tags($this->amount));
-        $this->created = htmlspecialchars(strip_tags($this->created));
+        //$this->created = htmlspecialchars(strip_tags($this->created));
 
         // bind values
         $stmt->bindParam(":cat_id", $this->cat_id);
@@ -73,7 +73,7 @@ class Product {
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":price", $this->price);
         $stmt->bindParam(":amount", $this->amount);
-        $stmt->bindParam(":created", $this->created);
+        //$stmt->bindParam(":created", $this->created);
 
         if ($stmt->execute()) {
             return true;

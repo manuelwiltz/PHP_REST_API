@@ -19,7 +19,6 @@ $data = json_decode(file_get_contents("php://input"));
 $category->user_id = $data->user_id;
 $category->name = $data->name;
 $category->description = $data->description;
-$category->created = date('Y-m-d H:i:s');
 
 if ($category->create()) {
     echo '{';

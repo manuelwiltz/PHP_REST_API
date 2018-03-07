@@ -22,7 +22,7 @@ $product->name = $data->name;
 $product->description = $data->description;
 $product->price = $data->price;
 $product->amount = $data->amount;
-$product->created = date('Y-m-d H:i:s');
+//$product->created = date('Y-m-d H:i:s');
 
 if ($product->create()) {
     echo '{';
