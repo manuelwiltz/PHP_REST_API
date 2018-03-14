@@ -51,8 +51,7 @@ class Product {
                 name=:name, 
                 description=:description, 
                 price=:price, 
-                amount=:amount";/*, 
-                created=:created";*/
+                amount=:amount";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -76,6 +75,10 @@ class Product {
         //$stmt->bindParam(":created", $this->created);
 
         if ($stmt->execute()) {
+            
+            //Subtract Product Price from current Budget.
+            
+            
             return true;
         } else {
             return false;
