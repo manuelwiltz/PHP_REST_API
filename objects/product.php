@@ -77,7 +77,43 @@ class Product {
         if ($stmt->execute()) {
             
             //Subtract Product Price from current Budget.
-            
+            //FUCK THIS SHIT
+
+            $query_help = "SELECT * FROM budget WHERE user_id = " . $this->user_id . " and NOW() between start_date and end_date";
+
+            if ($result = $this->conn->query($query_help)) {
+                if ($result->rowCount() == 1) {
+                    //Fetch Result ROW
+                    $row = $result->fetch(PDO::FETCH_ASSOC);
+
+                    $id = $row["id"];
+                    $user_id = $row["user_id"];
+                    $amount = $row["amount"];
+                    $current_amount = floatval($row["current_amount"]) - floatval($this->price);
+                    $start_date = $row["start_date"];
+                    $end_date = $row["end_date"];
+
+                    //UPDATE Product
+                    $query_update = "UPDATE budget SET
+                            user_id=:user_id, amount=:amount, 
+                            current_amount=:current_amount, start_date=:start_date, 
+                            end_date=:end_date
+                        WHERE
+                            id = :id";
+
+                    $stmt = $this->conn->prepare($query_update);
+
+                    $stmt->bindParam(":id", $id);
+                    $stmt->bindParam(":user_id", $user_id);
+                    $stmt->bindParam(":amount", $amount);
+                    $stmt->bindParam(":current_amount", floatval($current_amount));
+                    $stmt->bindParam(":start_date", $start_date);
+                    $stmt->bindParam(":end_date", $end_date);
+
+                    $stmt->execute();
+
+                }
+            }
             
             return true;
         } else {
