@@ -2,6 +2,7 @@
 
 # Database
 #### Vorgefertige DB Struktur:
+Zur Verwendung bitte unter: http://localhost/phpmyadmin/ importieren.
 [api_db.zip](https://github.com/manuelwiltz/PHP_REST_API/files/2048070/api_db.zip)
 
 ## Tables
