@@ -1,6 +1,8 @@
 # PHP_REST_API
 
 # Database
+#### Vorgefertige DB Struktur:
+[api_db.zip](https://github.com/manuelwiltz/PHP_REST_API/files/2048070/api_db.zip)
 
 ## Tables
 ![table_Overview](https://gitlab.htl-leonding.ac.at/manuelwiltz/Finanzplaner/uploads/c06cb47bbf6aff13e87a42098220c79d/table_Overview.PNG)
